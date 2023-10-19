@@ -1,0 +1,33 @@
+version: '3.9'
+services:
+  api:
+    image: bmeares/meerschaum:api
+    ports:
+    - 8000:8000
+    hostname: api
+    command: start api --production --port 8000
+    healthcheck:
+      test:
+      - CMD
+      - curl
+      - --fail
+      - http://localhost:8000/healthcheck
+      interval: 5s
+      timeout: 3s
+      retries: 3
+    environment:
+      MRSM_CONFIG: |-
+        {
+            "meerschaum": {
+              "instance": "sql:local",
+              "api_instance": "sql:local",
+              "web_instance": "sql:local"
+            }
+        }
+    restart: always
+    init: true
+    volumes:
+    - api_root:/meerschaum
+
+volumes:
+  api_root: null
