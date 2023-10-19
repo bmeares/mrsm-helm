@@ -6,14 +6,16 @@ metadata:
     kompose.version: 1.31.2 (a92241f79)
   creationTimestamp: null
   labels:
-    io.kompose.service: api
-  name: api
+    io.kompose.service: mrsm-api
+  name: mrsm-api
 spec:
+  type: NodePort
   ports:
-    - name: "8000"
+    - name: http
+      protocol: TCP
       port: 8000
       targetPort: 8000
   selector:
-    io.kompose.service: api
+    io.kompose.service: mrsm-api
 status:
   loadBalancer: {}
