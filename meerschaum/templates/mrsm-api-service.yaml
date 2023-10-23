@@ -1,21 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -c
-    kompose.version: 1.31.2 (a92241f79)
-  creationTimestamp: null
+  name: {{ include "meerschaum.fullname" . }}
   labels:
-    io.kompose.service: mrsm-api
-  name: mrsm-api
+    {{- include "meerschaum.labels" . | nindent 4 }}
 spec:
-  type: NodePort
+  type: {{ .Values.service.type }}
   ports:
-    - name: http
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}
       protocol: TCP
-      port: 8000
-      targetPort: 8000
+      name: http
   selector:
-    io.kompose.service: mrsm-api
-status:
-  loadBalancer: {}
+    {{- include "meerschaum.selectorLabels" . | nindent 4 }}

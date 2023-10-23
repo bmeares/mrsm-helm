@@ -1,12 +1,15 @@
+apiVersion: v2
+appVersion: 2.0.4
 name: meerschaum
 description: A Meerschaum Helm chart.
-app.kubernetes.io/managed-by: "Helm"
-meta.helm.sh/release-name: "meerschaum"
-meta.helm.sh/release-namespace: "default"
-type: application
 version: 0.0.1
-appVersion: 2.0.4
-apiVersion: v2
 keywords:
   - meerschaum
   - mrsm
+dependencies:
+  - name: common
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - bitnami-common
+    version: 1.x.x
+icon: https://meerschaum.io/assets/logo_500x500.png
