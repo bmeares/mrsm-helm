@@ -1,7 +1,7 @@
 image:
   registry: bmeares
   repository: meerschaum
-  tag: "full"
+  tag: "2.0.9"
   pullPolicy: IfNotPresent
 
 meerschaum:
