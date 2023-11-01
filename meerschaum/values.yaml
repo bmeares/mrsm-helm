@@ -1,11 +1,12 @@
 image:
   registry: bmeares
   repository: meerschaum
-  tag: "2.0.9"
+  tag: "2.0.9-full"
   pullPolicy: IfNotPresent
 
 meerschaum:
   path: /
+  healthcheckPath: /healthcheck
 
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
@@ -49,7 +50,8 @@ ingress:
     # nginx.ingress.kubernetes.io/ssl-redirect: "true"
     # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
   path: /
-  # hosts: []
+  hosts:
+    - localhost
   # tls: []
 
 podAnnotations: {}

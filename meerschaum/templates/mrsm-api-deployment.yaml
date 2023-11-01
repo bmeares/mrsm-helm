@@ -36,8 +36,8 @@ spec:
           {{- if .Values.livenessProbe.enabled }}
           livenessProbe:
             httpGet:
-              path: {{ .Values.meerschaum.path }}
-              port: http
+              path: {{ .Values.meerschaum.healthcheckPath }}
+              port: 8000
               httpHeaders:
                 - name: Host
                   value: {{ include "meerschaum.host" . | quote }}
@@ -54,8 +54,8 @@ spec:
           {{- if .Values.readinessProbe.enabled }}
           readinessProbe:
             httpGet:
-              path: {{ .Values.meerschaum.path }}
-              port: http
+              path: {{ .Values.meerschaum.healthcheckPath }}
+              port: 8000
               httpHeaders:
                 - name: Host
                   value: {{ include "meerschaum.host" . | quote }}
