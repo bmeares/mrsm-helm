@@ -82,7 +82,7 @@ spec:
                       "web_instance": "sql:local"
                     }
                 }
-          image: bmeares/meerschaum:full
+          image: bmeares/meerschaum:2.0.9
           imagePullPolicy: "IfNotPresent"
           livenessProbe:
             httpGet:
@@ -116,7 +116,7 @@ spec:
           resources: {}
           volumeMounts:
             - mountPath: /meerschaum
-              name: mrsm-api-root
+              name: meerschaum-data
       restartPolicy: Always
       volumes:
         - name: meerschaum-data
@@ -133,7 +133,7 @@ metadata:
     helm.sh/chart: meerschaum-0.0.1
     app.kubernetes.io/name: meerschaum
     app.kubernetes.io/instance: release-name
-    app.kubernetes.io/version: "2.0.4"
+    app.kubernetes.io/version: "2.0.9"
     app.kubernetes.io/managed-by: Helm
 spec:
   ingressClassName: nginx

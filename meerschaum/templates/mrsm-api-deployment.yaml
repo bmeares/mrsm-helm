@@ -84,7 +84,7 @@ spec:
           resources: {}
           volumeMounts:
             - mountPath: {{ .Values.persistence.path }}
-              name: mrsm-api-root
+              name: meerschaum-data
       restartPolicy: Always
       volumes:
         - name: meerschaum-data
