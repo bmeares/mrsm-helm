@@ -20,7 +20,10 @@ services:
     restart: always
     init: true
     volumes:
-    - api_root:/meerschaum
+    - sqlite:/meerschaum/sqlite
+    - config:/meerschaum/config
+    - jobs:/meerschaum/jobs
+    - logs:/meerschaum/logs
 
 volumes:
   api_root: null

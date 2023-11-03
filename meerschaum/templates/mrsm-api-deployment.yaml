@@ -76,13 +76,44 @@ spec:
               protocol: TCP
           resources: {}
           volumeMounts:
-            - mountPath: {{ .Values.persistence.path }}
-              name: meerschaum-data
+            - mountPath: {{ .Values.persistence.sqlitePath }}
+              name: meerschaum-sqlite-data
+            - mountPath: {{ .Values.persistence.configPath }}
+              name: meerschaum-config-data
+            - mountPath: {{ .Values.persistence.jobsPath }}
+              name: meerschaum-jobs-data
+            - mountPath: {{ .Values.persistence.logsPath }}
+              name: meerschaum-logs-data
       restartPolicy: Always
       volumes:
-        - name: meerschaum-data
+        - name: meerschaum-sqlite-data
         {{- if .Values.persistence.enabled }}
           persistentVolumeClaim:
+            # claimName: "meerschaum-sqlite-data"
+            claimName: {{ default (include "common.names.fullname" .) .Values.persistence.existingClaim }}
+        {{- else }}
+          emptyDir: {}
+        {{- end }}
+        - name: meerschaum-config-data
+        {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            # claimName: "meerschaum-config-data"
+            claimName: {{ default (include "common.names.fullname" .) .Values.persistence.existingClaim }}
+        {{- else }}
+          emptyDir: {}
+        {{- end }}
+        - name: meerschaum-jobs-data
+        {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            # claimName: "meerschaum-jobs-data"
+            claimName: {{ default (include "common.names.fullname" .) .Values.persistence.existingClaim }}
+        {{- else }}
+          emptyDir: {}
+        {{- end }}
+        - name: meerschaum-logs-data
+        {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            # claimName: "meerschaum-jobs-data"
             claimName: {{ default (include "common.names.fullname" .) .Values.persistence.existingClaim }}
         {{- else }}
           emptyDir: {}

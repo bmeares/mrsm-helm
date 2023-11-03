@@ -35,7 +35,10 @@ persistence:
   ## Requires persistence.existingClaim: nil|false
   ## Default: nil.
   ##
-  path: /meerschaum
+  sqlitePath: /meerschaum/sqlite
+  configPath: /meerschaum/config
+  jobsPath: /meerschaum/jobs
+  logsPath: /meerschaum/logs
 
   dataSource:
     enabled: false
