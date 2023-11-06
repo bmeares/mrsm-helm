@@ -1,8 +1,8 @@
 apiVersion: v2
-appVersion: 2.0.9
+appVersion: 2.1.0
 name: meerschaum
 description: A Meerschaum Helm chart.
-version: 0.0.2
+version: 0.0.3
 keywords:
   - meerschaum
   - mrsm
