@@ -6,7 +6,7 @@ metadata:
   name: release-name-meerschaum
   labels:
     app.kubernetes.io/name: meerschaum
-    helm.sh/chart: meerschaum-0.0.3
+    helm.sh/chart: meerschaum-0.0.4
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: meerschaum
@@ -24,10 +24,10 @@ kind: Service
 metadata:
   name: release-name-meerschaum
   labels:
-    helm.sh/chart: meerschaum-0.0.3
+    helm.sh/chart: meerschaum-0.0.4
     app.kubernetes.io/name: meerschaum
     app.kubernetes.io/instance: release-name
-    app.kubernetes.io/version: "2.1.0"
+    app.kubernetes.io/version: "2.1.1"
     app.kubernetes.io/managed-by: Helm
 spec:
   type: ClusterIP
@@ -46,10 +46,10 @@ kind: Deployment
 metadata:
   name: release-name-meerschaum
   labels:
-    helm.sh/chart: meerschaum-0.0.3
+    helm.sh/chart: meerschaum-0.0.4
     app.kubernetes.io/name: meerschaum
     app.kubernetes.io/instance: release-name
-    app.kubernetes.io/version: "2.1.0"
+    app.kubernetes.io/version: "2.1.1"
     app.kubernetes.io/managed-by: Helm
 spec:
   selector:
@@ -75,7 +75,7 @@ spec:
           env:
             - name: MRSM_SQL_MAIN
               value: sqlite:////meerschaum/sqlite/main.db
-          image: bmeares/meerschaum:2.1.0
+          image: bmeares/meerschaum:2.1.1
           imagePullPolicy: "IfNotPresent"
           livenessProbe:
             httpGet:
@@ -123,10 +123,10 @@ kind: Ingress
 metadata:
   name: release-name-meerschaum
   labels:
-    helm.sh/chart: meerschaum-0.0.3
+    helm.sh/chart: meerschaum-0.0.4
     app.kubernetes.io/name: meerschaum
     app.kubernetes.io/instance: release-name
-    app.kubernetes.io/version: "2.1.0"
+    app.kubernetes.io/version: "2.1.1"
     app.kubernetes.io/managed-by: Helm
 spec:
   ingressClassName: nginx
