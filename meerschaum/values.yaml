@@ -1,7 +1,7 @@
 image:
   registry: bmeares
   repository: meerschaum
-  tag: "2.1.1"
+  tag: "2.1.2"
   pullPolicy: IfNotPresent
 
 meerschaum:
@@ -22,7 +22,7 @@ persistence:
   ##
   # storageClass: "-"
   accessMode: ReadWriteOnce
-  size: "0.5Gi"
+  size: "1Gi"
 
   ## A manually managed Persistent Volume Claim
   ## Requires persistence.enabled: true

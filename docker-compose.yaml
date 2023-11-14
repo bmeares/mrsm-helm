@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   api:
-    image: bmeares/meerschaum:2.1.1
+    image: bmeares/meerschaum:2.1.2
     ports:
     - 8000:8000
     hostname: api
