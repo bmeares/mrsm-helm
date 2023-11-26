@@ -6,7 +6,7 @@ metadata:
   name: release-name-meerschaum
   labels:
     app.kubernetes.io/name: meerschaum
-    helm.sh/chart: meerschaum-0.0.5
+    helm.sh/chart: meerschaum-0.0.6
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: meerschaum
@@ -15,7 +15,7 @@ spec:
     - "ReadWriteOnce"
   resources:
     requests:
-      storage: "1Gi"
+      storage: "3Gi"
 status: {}
 ---
 # Source: meerschaum/templates/mrsm-api-service.yaml
@@ -24,10 +24,10 @@ kind: Service
 metadata:
   name: release-name-meerschaum
   labels:
-    helm.sh/chart: meerschaum-0.0.5
+    helm.sh/chart: meerschaum-0.0.6
     app.kubernetes.io/name: meerschaum
     app.kubernetes.io/instance: release-name
-    app.kubernetes.io/version: "2.1.2"
+    app.kubernetes.io/version: "2.1.4"
     app.kubernetes.io/managed-by: Helm
 spec:
   type: ClusterIP
@@ -46,10 +46,10 @@ kind: Deployment
 metadata:
   name: release-name-meerschaum
   labels:
-    helm.sh/chart: meerschaum-0.0.5
+    helm.sh/chart: meerschaum-0.0.6
     app.kubernetes.io/name: meerschaum
     app.kubernetes.io/instance: release-name
-    app.kubernetes.io/version: "2.1.2"
+    app.kubernetes.io/version: "2.1.4"
     app.kubernetes.io/managed-by: Helm
 spec:
   selector:
@@ -73,9 +73,15 @@ spec:
             - --port
             - "8000"
           env:
-            - name: MRSM_SQL_MAIN
-              value: sqlite:////meerschaum/sqlite/main.db
-          image: bmeares/meerschaum:2.1.2
+            - name: MRSM_CONFIG
+              value: |-
+                {
+                  "meerschaum": {
+                    "instance": "sql:local",
+                    "api_instance": "sql:local"
+                  }
+                }
+          image: bmeares/meerschaum:2.1.4
           imagePullPolicy: "IfNotPresent"
           livenessProbe:
             httpGet:
@@ -123,10 +129,10 @@ kind: Ingress
 metadata:
   name: release-name-meerschaum
   labels:
-    helm.sh/chart: meerschaum-0.0.5
+    helm.sh/chart: meerschaum-0.0.6
     app.kubernetes.io/name: meerschaum
     app.kubernetes.io/instance: release-name
-    app.kubernetes.io/version: "2.1.2"
+    app.kubernetes.io/version: "2.1.4"
     app.kubernetes.io/managed-by: Helm
 spec:
   ingressClassName: nginx

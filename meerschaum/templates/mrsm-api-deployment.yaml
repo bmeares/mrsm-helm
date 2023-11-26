@@ -29,8 +29,14 @@ spec:
             - --port
             - "8000"
           env:
-            - name: MRSM_SQL_MAIN
-              value: sqlite:////meerschaum/sqlite/main.db
+            - name: MRSM_CONFIG
+              value: |-
+                {
+                  "meerschaum": {
+                    "instance": "sql:local",
+                    "api_instance": "sql:local"
+                  }
+                }
           image: {{ include "meerschaum.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
           {{- if .Values.livenessProbe.enabled }}
