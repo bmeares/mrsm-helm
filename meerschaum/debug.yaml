@@ -6,7 +6,7 @@ metadata:
   name: release-name-meerschaum
   labels:
     app.kubernetes.io/name: meerschaum
-    helm.sh/chart: meerschaum-0.0.7
+    helm.sh/chart: meerschaum-0.0.8
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: meerschaum
@@ -24,7 +24,7 @@ kind: Service
 metadata:
   name: release-name-meerschaum
   labels:
-    helm.sh/chart: meerschaum-0.0.7
+    helm.sh/chart: meerschaum-0.0.8
     app.kubernetes.io/name: meerschaum
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/version: "2.1.4"
@@ -46,7 +46,7 @@ kind: Deployment
 metadata:
   name: release-name-meerschaum
   labels:
-    helm.sh/chart: meerschaum-0.0.7
+    helm.sh/chart: meerschaum-0.0.8
     app.kubernetes.io/name: meerschaum
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/version: "2.1.4"
@@ -131,7 +131,7 @@ kind: Ingress
 metadata:
   name: release-name-meerschaum
   labels:
-    helm.sh/chart: meerschaum-0.0.7
+    helm.sh/chart: meerschaum-0.0.8
     app.kubernetes.io/name: meerschaum
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/version: "2.1.4"
