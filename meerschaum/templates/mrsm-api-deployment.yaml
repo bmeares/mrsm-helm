@@ -41,6 +41,16 @@ spec:
                     "api_instance": "sql:local"
                   }
                 }
+            - name: DB_HOST
+              value: "{{ .Values.db.host }}"
+            - name: DB_PORT
+              value: "{{ .Values.db.port }}"
+            - name: DB_USERNAME
+              value: "{{ .Values.db.username }}"
+            - name: DB_PASSWORD
+              value: "{{ .Values.db.password }}"
+            - name: DB_NAME
+              value: "{{ .Values.db.database }}"
           image: {{ include "meerschaum.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
           {{- if .Values.livenessProbe.enabled }}
