@@ -31,8 +31,8 @@ spec:
             - api
             - --production
             - --port
-            - --debug
             - "8000"
+            - --debug
           env:
             - name: MRSM_CONFIG
               value: |-
