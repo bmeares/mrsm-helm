@@ -5,15 +5,15 @@ image:
   pullPolicy: IfNotPresent
 
 meerschaum:
-  config: |-
-    {
-      "meerschaum": {
-        "instance": "sql:prod",
-        "api_instance": "sql:prod"
-      }
-    }
-  sql:
-    prod: "sqlite:////meerschaum/sqlite/prod.db"
+  args: ["start", "api", "--production", "--port", "8000"]
+  config:
+    meerschaum:
+      instance: "sql:prod"
+      api_instance: "sql:prod"
+      connectors:
+        sql:
+          prod:
+            uri: 'sqlite:////meerschaum/sqlite/prod.db'
   path: /
   healthcheckPath: /healthcheck
 

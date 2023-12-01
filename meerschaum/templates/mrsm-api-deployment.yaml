@@ -27,18 +27,12 @@ spec:
         runAsGroup: 1000
       containers:
         - args:
-            - start
-            - api
-            - --production
-            - --port
-            - "8000"
-            - --debug
+          {{- range $arg := .Values.meerschaum.args }}
+          - {{ $arg | quote }}
+          {{- end }}
           env:
             - name: MRSM_CONFIG
-              value: |-
-            {{ .Values.meerschaum.config | nindent 16 }}
-            - name: MRSM_SQL_PROD
-              value: '{{ .Values.meerschaum.sql.prod }}'
+              value: {{ .Values.meerschaum.config | toJson | quote }}
           image: {{ include "meerschaum.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
           {{- if .Values.livenessProbe.enabled }}
