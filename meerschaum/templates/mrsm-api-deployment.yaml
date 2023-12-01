@@ -35,22 +35,10 @@ spec:
           env:
             - name: MRSM_CONFIG
               value: |-
-                {
-                  "meerschaum": {
-                    "instance": "sql:local",
-                    "api_instance": "sql:local"
-                  }
-                }
-            - name: DB_HOST
-              value: "{{ .Values.db.host }}"
-            - name: DB_PORT
-              value: "{{ .Values.db.port }}"
-            - name: DB_USERNAME
-              value: "{{ .Values.db.username }}"
-            - name: DB_PASSWORD
-              value: "{{ .Values.db.password }}"
-            - name: DB_NAME
-              value: "{{ .Values.db.database }}"
+            {{ .Values.meerschaum.config | nindent 16 }}
+            - name: MRSM_SQL_PROD
+              value: |-
+            {{ .Values.meerschaum.sql.prod | nindent 16 }}
           image: {{ include "meerschaum.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
           {{- if .Values.livenessProbe.enabled }}

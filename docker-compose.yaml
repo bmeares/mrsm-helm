@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   api:
-    image: bmeares/meerschaum:2.1.4
+    image: bmeares/meerschaum:2.1.5
     ports:
     - 8000:8000
     hostname: api
@@ -19,9 +19,13 @@ services:
       MRSM_CONFIG: |-
         {
           "meerschaum": {
-            "instance": "sql:local",
-            "api_instance": "sql:local"
+            "instance": "sql:prod",
+            "api_instance": "sql:prod"
           }
+        }
+      MRSM_SQL_PROD: |-
+        {
+          "uri": "sqlite:////meerschaum/sqlite/prod.db"
         }
     restart: always
     init: true

@@ -1,12 +1,25 @@
 image:
   registry: bmeares
   repository: meerschaum
-  tag: "2.1.4"
+  tag: "2.1.5"
   pullPolicy: IfNotPresent
 
 meerschaum:
+  config: |-
+    {
+      "meerschaum": {
+        "instance": "sql:prod",
+        "api_instance": "sql:prod"
+      }
+    }
+  sql:
+    prod: |-
+      {
+        "uri": "sqlite:////meerschaum/sqlite/prod.db"
+      }
   path: /
   healthcheckPath: /healthcheck
+
 
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
@@ -51,15 +64,9 @@ ingress:
     # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
   path: /
   hosts:
+    ### NOTE: This will need to be updated to your host.
     - localhost
   # tls: []
-
-db:
-  host: "cloud-sql-instance-ip-or-hostname"
-  port: 5432
-  username: "db-username"
-  password: "db-password"
-  database: "db-name"
 
 podAnnotations: {}
 
