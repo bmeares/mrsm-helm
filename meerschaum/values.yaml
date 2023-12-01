@@ -13,10 +13,7 @@ meerschaum:
       }
     }
   sql:
-    prod: |-
-      {
-        "uri": "sqlite:////meerschaum/sqlite/prod.db"
-      }
+    prod: "sqlite:////meerschaum/sqlite/prod.db"
   path: /
   healthcheckPath: /healthcheck
 

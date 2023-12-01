@@ -31,14 +31,14 @@ spec:
             - api
             - --production
             - --port
+            - --debug
             - "8000"
           env:
             - name: MRSM_CONFIG
               value: |-
             {{ .Values.meerschaum.config | nindent 16 }}
             - name: MRSM_SQL_PROD
-              value: |-
-            {{ .Values.meerschaum.sql.prod | nindent 16 }}
+              value: '{{ .Values.meerschaum.sql.prod }}'
           image: {{ include "meerschaum.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
           {{- if .Values.livenessProbe.enabled }}
